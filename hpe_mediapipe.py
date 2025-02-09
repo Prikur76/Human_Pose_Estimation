@@ -13,6 +13,14 @@ MOVEMENT_THRESHOLD = 0.02     # Порог движения (нормализо�
 mp_pose = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
 
+# Для множественных детекций:
+# mp_holistic = mp.solutions.holistic
+# with mp_holistic.Holistic(
+#     static_image_mode=False,
+#     model_complexity=2,
+#     enable_segmentation=True,
+#     refine_face_landmarks=True) as holistic:
+
 class PoseTracker:
     def __init__(self):
         self.tracks = {}
@@ -77,6 +85,11 @@ with mp_pose.Pose(
         success, frame = cap.read()
         if not success:
             break
+
+        # Для обработки видео высокой четкости:
+        # Ресайз кадра перед обработкой
+        # resized_frame = cv2.resize(frame, (640, 360))
+        # Восстановление координат после обработки...
 
         # Конвертация цвета и обработка
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
