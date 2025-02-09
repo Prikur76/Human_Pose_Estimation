@@ -164,5 +164,6 @@ cython_debug/
 .gigaide/
 input/
 output/
+hpe_models/
 
 /Human_Pose_Estimation.iml
